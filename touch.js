@@ -15,7 +15,7 @@ var touchevent = {
 		this.end_.X = e.touches[0].screenX;
 		this.end_.Y = e.touches[0].screenY;
 	},
-	"touchmoveHorizontal": function(e){
+	"touchmove": function(e){
 		e.preventDefault();
 
 		this.end_.X = e.touches[0].screenX;
@@ -23,7 +23,7 @@ var touchevent = {
 
 		if (this.start_.X < this.end_.X) {
 			//do something when start moving right
-		}else if( && this.start_.X > this.end_.X){
+		}else if(this.start_.X > this.end_.X){
 			//do something when start moving left
 		}
 	},
@@ -63,6 +63,6 @@ var touchevent = {
 function initTouch(target,direction){		
 		target.start_={},target.end_={};
     	target.addEventListener('touchstart',touchevent.touchstart, false);
-    	target.addEventListener('touchmove',touchevent["touchmove"+direction], false);
+    	target.addEventListener('touchmove',touchevent.touchmove, false);
     	target.addEventListener('touchend',touchevent["touchend"+direction], false);
 };
